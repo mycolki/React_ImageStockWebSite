@@ -1,0 +1,41 @@
+export const vars = {
+  fontSize: {
+    pageTitle: '80px',
+    titleLg: '24px',
+    titleMd: '20px',
+    titleSm: '18px',
+    xs: '12px',
+    sm: '13px',
+    md: '14px',
+    lg: '15px',
+    xl: '16px',
+    xxl: '17px',
+  },
+  fontWeight: {
+    400: '400',
+    500: '500',
+    800: '800',
+  },
+  borderRadius: {
+    default: '10px',
+    image: '20px',
+  },
+  color: {
+    default: '#212121',
+    white: '#ffffff',
+    grey100: '#f5f5f5',
+    grey200: '#eeeeee',
+    grey300: '#e0e0e0',
+    grey400: '#bdbdbd',
+    grey500: '#9e9e9e',
+    blue100: '#b3e5fc',
+    blue200: '#81d4fa',
+    blue300: '#4fc3f7',
+    blue800: '#0277bd',
+    blue900: '#01579b',
+    pink400: '#ec407a',
+  },
+  size: {
+    photoImage: '150px',
+  },
+};
