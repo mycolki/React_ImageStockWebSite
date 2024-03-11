@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import { vars } from 'style/vars';
-import { MenuListItem } from '.';
+import MenuListItem from './MenuListItem';
 
 const MenuList = function HorizonListBar({
   menus,

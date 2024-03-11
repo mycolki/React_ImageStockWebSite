@@ -1,6 +1,5 @@
-import { css } from '@emotion/css';
 import { Button } from 'components';
-import { vars } from 'style/vars';
+import PathDecoration from './PathDecoration';
 
 const MenuListItem = function HorizonListBar({
   menu: { path, name },
@@ -27,14 +26,3 @@ const MenuListItem = function HorizonListBar({
   );
 };
 export default MenuListItem;
-
-function PathDecoration() {
-  return (
-    <div
-      className={css`
-        height: 2px;
-        background-color: ${vars.color.default};
-      `}
-    ></div>
-  );
-}
