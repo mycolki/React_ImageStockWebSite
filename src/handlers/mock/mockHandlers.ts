@@ -1,5 +1,5 @@
 import { GetPhoto, GetPhotoDetail, PhotoResponse } from 'types/photo';
-import { isNullish, sleep } from 'utils';
+import { isNil, sleep } from 'utils';
 import { mockPhotos } from './data';
 
 let photos = [...mockPhotos];
@@ -43,7 +43,7 @@ export async function mockGetPhoto({ photoId }: { photoId: string }) {
 }
 
 export async function mockLikePhoto(id: string, token?: string) {
-  if (isNullish(token)) {
+  if (isNil(token)) {
     console.error('토큰이 존재하지 않습니다.');
     return;
   }
@@ -72,7 +72,7 @@ export async function mockLikePhoto(id: string, token?: string) {
 }
 
 export async function mockUnlikePhoto(id: string, token?: string) {
-  if (isNullish(token)) {
+  if (isNil(token)) {
     console.error('토큰이 존재하지 않습니다.');
     return;
   }
@@ -104,11 +104,11 @@ export async function mockGetUserLikedPhotos(
   username?: string,
   token?: string
 ) {
-  if (isNullish(username)) {
+  if (isNil(username)) {
     console.error('사용자가 존재하지 않습니다.');
     return;
   }
-  if (isNullish(token)) {
+  if (isNil(token)) {
     console.error('토큰이 존재하지 않습니다.');
     return;
   }

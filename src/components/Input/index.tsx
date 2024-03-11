@@ -3,7 +3,7 @@ import { css } from '@emotion/css';
 import { Size, sizes } from 'style/element';
 import { vars } from 'style/vars';
 
-interface InputProps
+export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: Size;
   rightSlot?: ReactNode;

@@ -2,8 +2,9 @@ import { css } from '@emotion/css';
 import { vars } from 'style/vars';
 import MenuListItem from './MenuListItem';
 
-const MenuList = function HorizonListBar({
+function MenuList({
   menus,
+  onMenuListItemClick,
 }: {
   menus: { path: string; name: string }[];
   onMenuListItemClick?: (menu: { path: string; name: string }) => void;
@@ -23,9 +24,13 @@ const MenuList = function HorizonListBar({
       `}
     >
       {menus.map((menu) => (
-        <MenuListItem menu={menu} onMenuListItemClick={onMenuListItemClick} />
+        <MenuListItem
+          key={menu.path}
+          menu={menu}
+          onMenuListItemClick={onMenuListItemClick}
+        />
       ))}
     </menu>
   );
-};
+}
 export default MenuList;

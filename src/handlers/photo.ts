@@ -5,7 +5,7 @@ import {
   LikePhoto,
   PhotoResponse,
 } from 'types/photo';
-import { isNullish } from 'utils';
+import { isNil } from 'utils';
 import ERROR from './errorMessages';
 import { ACCESS_KEY, BASE_URL } from './environmentKey';
 
@@ -60,10 +60,10 @@ export async function getPhoto({
 
 // https://unsplash.com/documentation#list-a-users-liked-photosexport async function getPhoto({ photoId }: { photoId: string }) {
 export async function getUserLikedPhotos(username?: string, token?: string) {
-  if (isNullish(username)) {
+  if (isNil(username)) {
     throw new Error(ERROR.UNAUTHENTICATED_USER);
   }
-  if (isNullish(token)) {
+  if (isNil(token)) {
     throw new Error(ERROR.UNAUTHENTICATED_TOKEN);
   }
 
@@ -84,7 +84,7 @@ export async function getUserLikedPhotos(username?: string, token?: string) {
 
 // https://unsplash.com/documentation#like-a-photo
 export async function likePhoto(id: string, token?: string) {
-  if (isNullish(token)) {
+  if (isNil(token)) {
     throw new Error(ERROR.UNAUTHENTICATED_TOKEN);
   }
 
@@ -103,7 +103,7 @@ export async function likePhoto(id: string, token?: string) {
 
 // https://unsplash.com/documentation#unlike-a-photo
 export async function unlikePhoto(id: string, token?: string) {
-  if (isNullish(token)) {
+  if (isNil(token)) {
     throw new Error(ERROR.UNAUTHENTICATED_TOKEN);
   }
 

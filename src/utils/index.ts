@@ -1,2 +1,2 @@
-export { default as isNullish } from './isNullish';
+export * from './checkNil';
 export { default as sleep } from './sleep';

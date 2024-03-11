@@ -1,7 +1,7 @@
 import { Button } from 'components';
 import PathDecoration from './PathDecoration';
 
-const MenuListItem = function HorizonListBar({
+function MenuListItem({
   menu: { path, name },
   onMenuListItemClick,
 }: {
@@ -24,5 +24,5 @@ const MenuListItem = function HorizonListBar({
       {isCurrentPath && <PathDecoration />}
     </div>
   );
-};
+}
 export default MenuListItem;
