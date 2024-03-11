@@ -14,5 +14,4 @@ function Like({ size = 32 }: { size?: number }) {
     </svg>
   );
 }
-
 export default Like;

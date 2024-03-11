@@ -28,5 +28,4 @@ function Search() {
     </svg>
   );
 }
-
 export default Search;

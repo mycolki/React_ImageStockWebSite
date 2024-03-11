@@ -14,5 +14,4 @@ function Unlike({ size = 32 }: { size?: number }) {
     </svg>
   );
 }
-
 export default Unlike;
