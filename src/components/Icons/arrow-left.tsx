@@ -12,5 +12,4 @@ function ArrowLeft() {
     </svg>
   );
 }
-
 export default ArrowLeft;
