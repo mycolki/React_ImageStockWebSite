@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { css } from '@emotion/css';
-import NavBar from './Navbar';
+import NavBar from 'components/Navbar';
 
 function Container() {
   return (

@@ -9,7 +9,7 @@ const MenuList = function HorizonListBar({
   onMenuListItemClick?: (menu: { path: string; name: string }) => void;
 }) {
   return (
-    <div
+    <menu
       className={css`
         display: flex;
         justify-content: center;
@@ -25,7 +25,7 @@ const MenuList = function HorizonListBar({
       {menus.map((menu) => (
         <MenuListItem menu={menu} onMenuListItemClick={onMenuListItemClick} />
       ))}
-    </div>
+    </menu>
   );
 };
 export default MenuList;
