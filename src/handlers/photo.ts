@@ -7,8 +7,7 @@ import {
 } from 'types/photo';
 import { isNullish } from 'utils';
 import ERROR from './errorMessages';
-
-const BASE_URL = import.meta.env.VITE_UNSPLASH_BASE_URL;
+import { ACCESS_KEY, BASE_URL } from './environmentKey';
 
 // https://unsplash.com/documentation#search-photos
 export async function searhPhotos({
@@ -26,9 +25,7 @@ export async function searhPhotos({
     `${BASE_URL}/search/photos`,
     {
       headers: {
-        Authorization: token
-          ? `Bearer ${token}`
-          : `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`,
+        Authorization: token ? `Bearer ${token}` : `Client-ID ${ACCESS_KEY}`,
       },
       params: {
         page,
@@ -53,9 +50,7 @@ export async function getPhoto({
     `${BASE_URL}/photos/${photoId}`,
     {
       headers: {
-        Authorization: token
-          ? `Bearer ${token}`
-          : `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`,
+        Authorization: token ? `Bearer ${token}` : `Client-ID ${ACCESS_KEY}`,
       },
     }
   );

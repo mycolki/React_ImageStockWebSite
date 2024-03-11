@@ -1,4 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 import {
   QueryClient,
   QueryClientProvider,
@@ -9,6 +10,7 @@ import { Global, css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import { vars } from 'style/vars';
 import Routes from 'pages/Routes';
+import ErrorFallback from 'pages/ErrorFallback';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,8 +29,10 @@ function App() {
     <BrowserRouter>
       <Global styles={globalStyles} />
       <QueryClientProvider client={queryClient}>
-        <Routes />
-        <ReactQueryDevtools initialIsOpen={false} />
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <Routes />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </ErrorBoundary>
       </QueryClientProvider>
     </BrowserRouter>
   );
