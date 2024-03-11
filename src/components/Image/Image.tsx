@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { css } from '@emotion/css';
-import { vars } from 'cds/vars';
+import { vars } from 'style/vars';
 
 function Image({
   width = '200px',

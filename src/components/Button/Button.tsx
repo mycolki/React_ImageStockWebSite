@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { css as externalCss, SerializedStyles } from '@emotion/react';
 import { css } from '@emotion/css';
-import { Size, Variant, sizes } from 'cds/element';
-import { vars } from 'cds/vars';
+import { Size, Variant, sizes } from 'style/element';
+import { vars } from 'style/vars';
 
 export interface ButtonStyle {
   variant?: Variant;

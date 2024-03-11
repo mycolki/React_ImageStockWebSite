@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import { keyframes } from '@emotion/react';
-import { vars } from 'cds/vars';
+import { vars } from 'style/vars';
 
 function SkeletonImages({
   width = '200px',
