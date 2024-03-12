@@ -1,8 +1,19 @@
 import { GetPhoto, GetPhotoDetail, PhotoResponse } from 'types/photo';
-import { isNullish, sleep } from 'utils';
+import { isNil, sleep } from 'utils';
 import { mockPhotos } from './data';
+import { User } from 'types/auth';
 
 let photos = [...mockPhotos];
+
+export async function mockGetUser(_code: string): Promise<User> {
+  const result = {
+    access_token: '12345',
+    username: 'HANY🐸',
+  } as User;
+
+  await sleep(1000);
+  return result;
+}
 
 export async function mockSearchPhotos(): Promise<PhotoResponse<GetPhoto>> {
   const result = {
@@ -43,53 +54,54 @@ export async function mockGetPhoto({ photoId }: { photoId: string }) {
 }
 
 export async function mockLikePhoto(id: string, token?: string) {
-  if (isNullish(token)) {
+  if (isNil(token)) {
     console.error('토큰이 존재하지 않습니다.');
     return;
   }
 
-  let likedPhoto: GetPhoto | {} = {};
+  photos = photos.map((photo) =>
+    photo.id === id ? { ...photo, liked_by_user: true } : photo
+  );
 
-  photos = photos.map((photo) => {
-    if (photo.id === id) {
-      const updatedPhoto = { ...photo, liked_by_user: true };
-      likedPhoto = updatedPhoto;
-      return photo;
-    }
-    return photo;
-  });
+  const photo = photos.find((photo) => photo.id === id);
+
+  if (photo === undefined) {
+    console.error('사진이 존재하지 않습니다.');
+    return;
+  }
 
   const result = {
-    likedPhoto,
+    photo,
     user: {
       id: 'ab',
       name: '12',
     },
   };
+  console.log(result);
 
   await sleep(1000);
   return result;
 }
 
 export async function mockUnlikePhoto(id: string, token?: string) {
-  if (isNullish(token)) {
+  if (isNil(token)) {
     console.error('토큰이 존재하지 않습니다.');
     return;
   }
 
-  let unlikedPhoto: GetPhoto | {} = {};
+  photos = photos.map((photo) =>
+    photo.id === id ? { ...photo, liked_by_user: false } : photo
+  );
 
-  photos = photos.map((photo) => {
-    if (photo.id === id) {
-      const updatedPhoto = { ...photo, liked_by_user: false };
-      unlikedPhoto = updatedPhoto;
-      return photo;
-    }
-    return photo;
-  });
+  const photo = photos.find((photo) => photo.id === id);
+
+  if (photo === undefined) {
+    console.error('사진이 존재하지 않습니다.');
+    return;
+  }
 
   const result = {
-    unlikedPhoto,
+    photo,
     user: {
       id: 'ab',
       name: '12',
@@ -104,11 +116,11 @@ export async function mockGetUserLikedPhotos(
   username?: string,
   token?: string
 ) {
-  if (isNullish(username)) {
+  if (isNil(username)) {
     console.error('사용자가 존재하지 않습니다.');
     return;
   }
-  if (isNullish(token)) {
+  if (isNil(token)) {
     console.error('토큰이 존재하지 않습니다.');
     return;
   }

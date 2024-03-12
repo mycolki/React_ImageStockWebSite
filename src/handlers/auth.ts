@@ -26,7 +26,10 @@ export async function requestToken(code: string) {
   return result.data;
 }
 
-let cachedUser: User | undefined;
+let cachedUser: User | undefined = {
+  access_token: '12345',
+  username: 'HANY🐸',
+} as User;
 
 export function cacheUser(user: User) {
   cachedUser = user;

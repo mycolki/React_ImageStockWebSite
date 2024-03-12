@@ -25,10 +25,25 @@ export const mockPhotos: GetPhoto[] = [
   },
   {
     id: '4',
-    liked_by_user: false,
+    liked_by_user: true,
     urls: {
       small:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTu4pSLizi8b0_rxbb7j4NymuZPU4lHprMarw&s',
+    },
+  },
+  {
+    id: '5',
+    liked_by_user: false,
+    urls: {
+      small:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQwzkP68IhORVp6zT2RsXzPjMqvXolPMk8w&usqp=CAU',
+    },
+  },
+  {
+    id: '6',
+    liked_by_user: true,
+    urls: {
+      small: 'https://image.yes24.com/goods/101293479/XL',
     },
   },
 ];

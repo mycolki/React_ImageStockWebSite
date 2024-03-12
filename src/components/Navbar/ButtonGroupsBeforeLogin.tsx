@@ -2,7 +2,7 @@ import { css } from '@emotion/css';
 import { Button, StyledLink, Unlike } from 'components';
 import { vars } from 'style/vars';
 
-function ButtonsBeforeLogin() {
+function ButtonsAfterLogin() {
   return (
     <>
       <Button size="small" variant="secondary">
@@ -27,4 +27,4 @@ function ButtonsBeforeLogin() {
     </>
   );
 }
-export default ButtonsBeforeLogin;
+export default ButtonsAfterLogin;

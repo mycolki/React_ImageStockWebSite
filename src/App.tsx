@@ -11,6 +11,8 @@ import emotionNormalize from 'emotion-normalize';
 import { vars } from 'style/vars';
 import Routes from 'pages/Routes';
 import ErrorFallback from 'pages/ErrorFallback';
+import ModalProvider from 'providers/ModalProvider';
+import LikeCallbackProvider from 'providers/LikeChangeProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,12 +30,16 @@ function App() {
   return (
     <BrowserRouter>
       <Global styles={globalStyles} />
-      <QueryClientProvider client={queryClient}>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <Routes />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </ErrorBoundary>
-      </QueryClientProvider>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <QueryClientProvider client={queryClient}>
+          <LikeCallbackProvider>
+            <ModalProvider>
+              <Routes />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </ModalProvider>
+          </LikeCallbackProvider>
+        </QueryClientProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

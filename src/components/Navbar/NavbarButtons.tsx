@@ -1,8 +1,12 @@
 import { css } from '@emotion/css';
-import ButtonsBeforeLogin from './ButtonGroupsBeforeLogin';
+import ButtonsAfterLogin from './ButtonGroupsBeforeLogin';
 import { Button } from 'components';
+import { login } from 'handlers/auth';
+import { useUser } from 'hooks';
 
 function NavbarButtons() {
+  const user = useUser();
+
   return (
     <div
       aria-label="navbar-buttons"
@@ -13,11 +17,10 @@ function NavbarButtons() {
         gap: 12px;
       `}
     >
-      {/* TODO: isLoggedUser */}
       {true ? (
-        <ButtonsBeforeLogin />
+        <ButtonsAfterLogin />
       ) : (
-        <Button size="small" variant="secondary">
+        <Button size="small" variant="secondary" onClick={() => login()}>
           로그인
         </Button>
       )}
