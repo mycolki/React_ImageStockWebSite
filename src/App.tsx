@@ -11,6 +11,7 @@ import emotionNormalize from 'emotion-normalize';
 import { vars } from 'style/vars';
 import Routes from 'pages/Routes';
 import ErrorFallback from 'pages/ErrorFallback';
+import ModalProvider from 'providers/ModalProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,8 +31,10 @@ function App() {
       <Global styles={globalStyles} />
       <QueryClientProvider client={queryClient}>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <Routes />
-          <ReactQueryDevtools initialIsOpen={false} />
+          <ModalProvider>
+            <Routes />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ModalProvider>
         </ErrorBoundary>
       </QueryClientProvider>
     </BrowserRouter>

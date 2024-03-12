@@ -23,7 +23,7 @@ function SearchedPhotoList({
           height={vars.size.photoImage}
         />
       ) : (
-        list?.map((photo) => <SearchedPhoto photo={photo} />)
+        list?.map((photo) => <SearchedPhoto key={photo.id} photo={photo} />)
       )}
     </>
   );

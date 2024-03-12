@@ -1,15 +1,20 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import { css } from '@emotion/css';
 import { vars } from 'style/vars';
+import {
+  ModalsDispatchContext,
+  ModalsStateContext,
+} from 'contexts/ModalContext';
 
 interface ModalWrapperProps {
-  isOpen: boolean;
-  onClose: () => void;
   children: ReactNode;
 }
 
-function ModalWrapper({ isOpen, onClose, children }: ModalWrapperProps) {
-  if (!isOpen) {
+function ModalWrapper({ children }: ModalWrapperProps) {
+  const isModalOpen = useContext(ModalsStateContext);
+  const { close } = useContext(ModalsDispatchContext);
+
+  if (!isModalOpen) {
     return null;
   }
 
@@ -17,7 +22,7 @@ function ModalWrapper({ isOpen, onClose, children }: ModalWrapperProps) {
     <div
       onClick={(e) => {
         if (e.target === e.currentTarget) {
-          onClose();
+          close();
         }
       }}
       className={css`
