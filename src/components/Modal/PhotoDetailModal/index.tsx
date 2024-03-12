@@ -1,13 +1,13 @@
+import { useCallback } from 'react';
 import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { css } from '@emotion/css';
-import { getPhoto } from 'handlers/photo';
+import { GetPhoto, GetPhotoDetail } from 'types/photo';
 import { Image } from 'components';
 import TagList from './TagList';
 import Header from './Header';
 import Description from './Description';
+import { getPhoto } from 'handlers/photo';
 import { useSetLikeCallback, useUser } from 'hooks';
-import { GetPhoto, GetPhotoDetail } from 'types/photo';
-import { useCallback } from 'react';
 
 function PhotoDetailModal({ photoId }: { photoId: string }) {
   const user = useUser();

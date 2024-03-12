@@ -7,8 +7,8 @@ import { useUser } from 'hooks';
 import { Suspense } from 'react';
 
 function Photo({ photo: { id, urls, liked_by_user } }: { photo: GetPhoto }) {
-  const { openModal } = useModals();
   const user = useUser();
+  const { openModal } = useModals();
 
   return (
     <>
