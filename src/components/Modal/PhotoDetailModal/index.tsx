@@ -1,20 +1,42 @@
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
 import { css } from '@emotion/css';
 import { getPhoto } from 'handlers/photo';
 import { Image } from 'components';
 import TagList from './TagList';
 import Header from './Header';
 import Description from './Description';
-import { useUser } from 'hooks';
-import { mockGetPhoto } from 'handlers/mock/mockHandlers';
+import { useSetLikeCallback, useUser } from 'hooks';
+import { GetPhoto, GetPhotoDetail } from 'types/photo';
+import { useCallback } from 'react';
 
 function PhotoDetailModal({ photoId }: { photoId: string }) {
   const user = useUser();
+  const queryClient = useQueryClient();
+  const setLikeChangeCallback = useSetLikeCallback();
+
   const { data: photo } = useSuspenseQuery({
     queryKey: ['photo', { photoId }],
-    queryFn: () => getPhoto({ photoId, token: user?.access_token }),
-    // queryFn: () => mockGetPhoto({ photoId }),
+    queryFn: () => {
+      const response = getPhoto({ photoId, token: user?.access_token });
+      setLikeChangeCallback(() => handleLikeChange);
+      return response;
+    },
   });
+
+  const handleLikeChange = useCallback(
+    (updatedPhoto: GetPhoto) => {
+      queryClient.setQueryData<GetPhotoDetail>(
+        ['photo', { photoId: updatedPhoto.id }],
+        (oldData) => {
+          if (oldData === undefined) {
+            return undefined;
+          }
+          return { ...oldData, liked_by_user: updatedPhoto.liked_by_user };
+        }
+      );
+    },
+    [queryClient]
+  );
 
   return (
     <div

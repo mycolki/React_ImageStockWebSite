@@ -4,7 +4,7 @@ import { useContext } from 'react';
 function useModals() {
   const context = useContext(ModalsDispatchContext);
 
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useModal must be used within a ModalProvider');
   }
 

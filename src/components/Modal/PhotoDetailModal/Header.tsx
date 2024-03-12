@@ -32,12 +32,7 @@ function Header({ id, username, liked }: HeaderProps) {
       </span>
 
       {user && (
-        <LikeButton
-          photoId={id}
-          likedByUser={liked}
-          variant="outline"
-          onLikeChange={() => {}}
-        />
+        <LikeButton photoId={id} likedByUser={liked} variant="outline" />
       )}
     </header>
   );

@@ -20,11 +20,7 @@ function Photo({ photo: { id, urls, liked_by_user } }: { photo: GetPhoto }) {
         onClick={openModal}
         topRightSlot={
           user ? (
-            <LikeButton
-              photoId={id}
-              likedByUser={liked_by_user}
-              onLikeChange={() => {}}
-            />
+            <LikeButton photoId={id} likedByUser={liked_by_user} />
           ) : undefined
         }
       />

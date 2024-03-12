@@ -1,4 +1,3 @@
-import ModalWrapper from 'components/Modal/ModalWrapper';
 import {
   ModalsDispatchContext,
   ModalsStateContext,
