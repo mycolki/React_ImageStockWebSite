@@ -3,6 +3,7 @@ import { vars } from 'style/vars';
 import { GetPhoto } from 'types/photo';
 import useModals from 'hooks/useModal';
 import { ModalWrapper, PhotoDetailModal } from 'components/Modal';
+import { useUser } from 'hooks';
 
 function SearchedPhoto({
   photo: { id, urls, liked_by_user },
@@ -10,6 +11,7 @@ function SearchedPhoto({
   photo: GetPhoto;
 }) {
   const { openModal } = useModals();
+  const user = useUser();
 
   return (
     <>
@@ -19,9 +21,8 @@ function SearchedPhoto({
         width={vars.size.photoImage}
         height={vars.size.photoImage}
         onClick={openModal}
-        // TODO: isLoggedUser
         topRightSlot={
-          true ? (
+          user ? (
             <LikeButton
               photoId={id}
               likedByUser={liked_by_user}

@@ -1,14 +1,15 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { css } from '@emotion/css';
+import { vars } from 'style/vars';
 import { getPhoto } from 'handlers/photo';
 import { Image } from 'components';
-import { vars } from 'style/vars';
 import TagList from './TagList';
 import PhotoTitle from './PhotoTitle';
 import Description from './Description';
+import { useUser } from 'hooks';
 
 function PhotoDetailModal({ photoId }: { photoId: string }) {
-  const user = { access_token: '' };
+  const user = useUser();
   const { data: photo } = useSuspenseQuery({
     queryKey: ['photo', { photoId }],
     queryFn: () => getPhoto({ photoId, token: user?.access_token }),

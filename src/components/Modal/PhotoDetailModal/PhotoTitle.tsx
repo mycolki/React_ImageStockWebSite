@@ -1,5 +1,6 @@
 import { css } from '@emotion/css';
 import { LikeButton } from 'components';
+import { useUser } from 'hooks';
 import { vars } from 'style/vars';
 
 interface PhotoDetailProps {
@@ -9,6 +10,8 @@ interface PhotoDetailProps {
 }
 
 function PhotoTitle({ id, username, liked }: PhotoDetailProps) {
+  const user = useUser();
+
   return (
     <header
       className={css`
@@ -28,8 +31,7 @@ function PhotoTitle({ id, username, liked }: PhotoDetailProps) {
         {username}
       </span>
 
-      {/* TODO: isLoggedUser */}
-      {true && (
+      {user && (
         <LikeButton
           photoId={id}
           likedByUser={liked}
