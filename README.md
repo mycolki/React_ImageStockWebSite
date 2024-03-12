@@ -111,6 +111,9 @@ Unsplash Clone based UnsplashAPI
 - 로딩상태 fallback
 - ErrorBoudary 에러핸들링
 - URL에 현재 검색쿼리 및 페이지 반영
+- Provider와 context를 이용하여 컴포넌트의 scope를 졍의하고 기능 핸들링
+  - Modal Provider: 글로벌 모달 구성
+  - LikeCallback Provider: LikeButton컴포넌트에서 좋아요버튼 클릭(like/unlike)시 불필요한 호출없이 queryClient.setQueryData으로 화면 업데이트가 가능하도록 함수를 context로 관리. 데이터를 페칭하는 컴포넌트에서 queryClient.setQueryData를 호출하는 콜백함수를 set하고, LikeButton컴포넌트에서 get하여 사용.
 
 <br />
 
