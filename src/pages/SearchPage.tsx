@@ -7,6 +7,7 @@ import {
   PhotoList,
 } from 'components/Photo';
 import { useSearchPhoto, useUserByToken } from 'hooks';
+import { User } from 'types/auth';
 
 const photoCountPerPage = 12;
 

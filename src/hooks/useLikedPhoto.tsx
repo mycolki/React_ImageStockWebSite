@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { sleep } from 'utils';
+import { isNil, sleep } from 'utils';
 import { GetPhoto } from 'types/photo';
 import { User } from 'types/auth';
 import { getUserLikedPhotos } from 'handlers/photo';
@@ -28,7 +28,7 @@ function useLikedPhoto({ user }: { user?: User }) {
   const handleLikeChange = useCallback(
     (updatedPhoto: GetPhoto) => {
       queryClient.setQueryData<GetPhoto[]>(['user_likes'], (oldData) => {
-        if (oldData === undefined) {
+        if (isNil(oldData)) {
           return undefined;
         }
         return oldData.filter((photo) => photo.id !== updatedPhoto.id);

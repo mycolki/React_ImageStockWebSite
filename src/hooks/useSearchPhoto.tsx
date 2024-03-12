@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { GetPhoto, PhotoResponse } from 'types/photo';
 import { User } from 'types/auth';
-import { sleep } from 'utils';
+import { isNil, sleep } from 'utils';
 import { searhPhotos } from 'handlers/photo';
 import { useSetLikeCallback } from 'hooks';
 
@@ -53,7 +53,7 @@ function useSearchPhoto({
       queryClient.setQueryData<PhotoResponse<GetPhoto>>(
         ['photos', { page, query: searchTerm }],
         (oldData) => {
-          if (oldData === undefined) {
+          if (isNil(oldData)) {
             return undefined;
           }
           return {

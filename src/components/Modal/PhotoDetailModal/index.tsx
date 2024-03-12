@@ -8,6 +8,7 @@ import Header from './Header';
 import Description from './Description';
 import { getPhoto } from 'handlers/photo';
 import { useSetLikeCallback, useUser } from 'hooks';
+import { isNil } from 'utils';
 
 function PhotoDetailModal({ photoId }: { photoId: string }) {
   const user = useUser();
@@ -28,7 +29,7 @@ function PhotoDetailModal({ photoId }: { photoId: string }) {
       queryClient.setQueryData<GetPhotoDetail>(
         ['photo', { photoId: updatedPhoto.id }],
         (oldData) => {
-          if (oldData === undefined) {
+          if (isNil(oldData)) {
             return undefined;
           }
           return { ...oldData, liked_by_user: updatedPhoto.liked_by_user };

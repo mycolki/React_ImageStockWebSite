@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import ButtonsBeforeLogin from './ButtonGroupsBeforeLogin';
+import ButtonsAfterLogin from './ButtonGroupsBeforeLogin';
 import { Button } from 'components';
 import { login } from 'handlers/auth';
 import { useUser } from 'hooks';
@@ -17,8 +17,8 @@ function NavbarButtons() {
         gap: 12px;
       `}
     >
-      {user ? (
-        <ButtonsBeforeLogin />
+      {true ? (
+        <ButtonsAfterLogin />
       ) : (
         <Button size="small" variant="secondary" onClick={() => login()}>
           로그인
