@@ -2,7 +2,7 @@ import { Routes as PageRoutes, Route, Navigate } from 'react-router-dom';
 import SearchPhotoPage from './SearchPhotoPage';
 import LikePage from './LikePage';
 import { Container } from 'components/Layout';
-import { MainPageMenuList } from 'components/Menu';
+import { LikePageMenuList, MainPageMenuList } from 'components/Menu';
 
 function Routes() {
   return (
@@ -11,7 +11,9 @@ function Routes() {
         <Route element={<MainPageMenuList />}>
           <Route path="/" element={<SearchPhotoPage />} />
         </Route>
-        <Route path="/like" element={<LikePage />} />
+        <Route path="/user" element={<LikePageMenuList />}>
+          <Route path="like" element={<LikePage />} />
+        </Route>
         <Route path="*" element={<Navigate replace to="/" />} />
       </Route>
     </PageRoutes>

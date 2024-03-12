@@ -1,10 +1,9 @@
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { css } from '@emotion/css';
-import { vars } from 'style/vars';
 import { getPhoto } from 'handlers/photo';
 import { Image } from 'components';
 import TagList from './TagList';
-import PhotoTitle from './PhotoTitle';
+import Header from './Header';
 import Description from './Description';
 import { useUser } from 'hooks';
 
@@ -23,7 +22,7 @@ function PhotoDetailModal({ photoId }: { photoId: string }) {
         align-items: flex-start;
       `}
     >
-      <PhotoTitle
+      <Header
         id={photo.id}
         username={photo.user.name}
         liked={photo.liked_by_user}
@@ -54,23 +53,3 @@ function PhotoDetailModal({ photoId }: { photoId: string }) {
   );
 }
 export default PhotoDetailModal;
-
-const columnStyle = css`
-  display: flex;
-  justify-content: flex-start;
-  width: 60%;
-  padding: 12px 24px;
-  gap: 60px;
-  white-space: nowrap;
-  font-size: ${vars.fontSize.md};
-
-  .column {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 50px;
-    .label {
-      font-weight: ${vars.fontWeight[800]};
-    }
-  }
-`;

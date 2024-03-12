@@ -1,9 +1,10 @@
-import { Image, LikeButton } from 'components';
+import { Image, LikeButton, Spinner } from 'components';
 import { vars } from 'style/vars';
 import { GetPhoto } from 'types/photo';
 import useModals from 'hooks/useModal';
 import { ModalWrapper, PhotoDetailModal } from 'components/Modal';
 import { useUser } from 'hooks';
+import { Suspense } from 'react';
 
 function SearchedPhoto({
   photo: { id, urls, liked_by_user },
@@ -31,9 +32,11 @@ function SearchedPhoto({
           ) : undefined
         }
       />
-      <ModalWrapper>
-        <PhotoDetailModal photoId={id} />
-      </ModalWrapper>
+      <Suspense fallback={<Spinner />}>
+        <ModalWrapper>
+          <PhotoDetailModal photoId={id} />
+        </ModalWrapper>
+      </Suspense>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { css } from '@emotion/css';
 import ButtonsBeforeLogin from './ButtonGroupsBeforeLogin';
 import { Button } from 'components';
+import { login } from 'handlers/auth';
 import { useUser } from 'hooks';
 
 function NavbarButtons() {
@@ -19,7 +20,7 @@ function NavbarButtons() {
       {user ? (
         <ButtonsBeforeLogin />
       ) : (
-        <Button size="small" variant="secondary">
+        <Button size="small" variant="secondary" onClick={() => login()}>
           로그인
         </Button>
       )}

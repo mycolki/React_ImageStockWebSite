@@ -3,13 +3,13 @@ import { LikeButton } from 'components';
 import { useUser } from 'hooks';
 import { vars } from 'style/vars';
 
-interface PhotoDetailProps {
+interface HeaderProps {
   id: string;
   username: string;
   liked: boolean;
 }
 
-function PhotoTitle({ id, username, liked }: PhotoDetailProps) {
+function Header({ id, username, liked }: HeaderProps) {
   const user = useUser();
 
   return (
@@ -42,4 +42,4 @@ function PhotoTitle({ id, username, liked }: PhotoDetailProps) {
     </header>
   );
 }
-export default PhotoTitle;
+export default Header;
