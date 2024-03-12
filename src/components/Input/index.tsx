@@ -24,6 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         height: ${sizes[size]};
         margin: auto;
         padding: 0px 8px;
+        font-size: calc(${sizes[size]} / 2.4);
         border: 1px solid ${vars.color.grey300};
         border-radius: ${vars.borderRadius.default};
         background-color: ${vars.color.white};
