@@ -17,7 +17,7 @@ function NavbarButtons() {
         gap: 12px;
       `}
     >
-      {true ? (
+      {user ? (
         <ButtonsAfterLogin />
       ) : (
         <Button size="small" variant="secondary" onClick={() => login()}>
