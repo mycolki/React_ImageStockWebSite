@@ -48,19 +48,19 @@ export async function mockLikePhoto(id: string, token?: string) {
     return;
   }
 
-  let likedPhoto: GetPhoto | {} = {};
+  let photo = {};
 
   photos = photos.map((photo) => {
     if (photo.id === id) {
       const updatedPhoto = { ...photo, liked_by_user: true };
-      likedPhoto = updatedPhoto;
+      photo = updatedPhoto;
       return photo;
     }
     return photo;
   });
 
   const result = {
-    likedPhoto,
+    photo: photo as GetPhoto,
     user: {
       id: 'ab',
       name: '12',
@@ -77,19 +77,19 @@ export async function mockUnlikePhoto(id: string, token?: string) {
     return;
   }
 
-  let unlikedPhoto: GetPhoto | {} = {};
+  let photo = {};
 
   photos = photos.map((photo) => {
     if (photo.id === id) {
       const updatedPhoto = { ...photo, liked_by_user: false };
-      unlikedPhoto = updatedPhoto;
+      photo = updatedPhoto;
       return photo;
     }
     return photo;
   });
 
   const result = {
-    unlikedPhoto,
+    photo: photo as GetPhoto,
     user: {
       id: 'ab',
       name: '12',

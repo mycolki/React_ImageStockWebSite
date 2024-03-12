@@ -6,11 +6,7 @@ import { ModalWrapper, PhotoDetailModal } from 'components/Modal';
 import { useUser } from 'hooks';
 import { Suspense } from 'react';
 
-function SearchedPhoto({
-  photo: { id, urls, liked_by_user },
-}: {
-  photo: GetPhoto;
-}) {
+function Photo({ photo: { id, urls, liked_by_user } }: { photo: GetPhoto }) {
   const { openModal } = useModals();
   const user = useUser();
 
@@ -40,4 +36,4 @@ function SearchedPhoto({
     </>
   );
 }
-export default SearchedPhoto;
+export default Photo;

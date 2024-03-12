@@ -6,12 +6,14 @@ import TagList from './TagList';
 import Header from './Header';
 import Description from './Description';
 import { useUser } from 'hooks';
+import { mockGetPhoto } from 'handlers/mock/mockHandlers';
 
 function PhotoDetailModal({ photoId }: { photoId: string }) {
   const user = useUser();
   const { data: photo } = useSuspenseQuery({
     queryKey: ['photo', { photoId }],
     queryFn: () => getPhoto({ photoId, token: user?.access_token }),
+    // queryFn: () => mockGetPhoto({ photoId }),
   });
 
   return (

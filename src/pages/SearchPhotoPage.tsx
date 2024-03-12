@@ -8,8 +8,9 @@ import {
   SearchFormWrapper,
   SearchForm,
   PhotoListWrapper,
-  SearchedPhotoList,
+  PhotoList,
 } from 'components/Photo';
+import { mockSearchPhotos } from 'handlers/mock/mockHandlers';
 
 const photoCountPerPage = 12;
 
@@ -28,12 +29,13 @@ function SearchPhotoPage() {
     enabled: searchTerm !== '',
     queryFn: async () => {
       const [response] = await Promise.all([
-        searhPhotos({
-          page,
-          perPage: photoCountPerPage,
-          token: user?.access_token,
-          query: searchTerm,
-        }),
+        mockSearchPhotos(),
+        // searhPhotos({
+        //   page,
+        //   perPage: photoCountPerPage,
+        //   token: user?.access_token,
+        //   query: searchTerm,
+        // }),
         sleep(1500),
       ]);
 
@@ -54,7 +56,7 @@ function SearchPhotoPage() {
       </SearchFormWrapper>
 
       <PhotoListWrapper>
-        <SearchedPhotoList
+        <PhotoList
           list={data?.results}
           isLoading={isLoading}
           photoCount={photoCountPerPage}
