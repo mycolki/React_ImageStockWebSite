@@ -18,7 +18,7 @@ function NavbarButtons() {
       `}
     >
       {user ? (
-        <ButtonsAfterLogin />
+        <ButtonsAfterLogin username={user.username} />
       ) : (
         <Button size="small" variant="secondary" onClick={() => login()}>
           로그인

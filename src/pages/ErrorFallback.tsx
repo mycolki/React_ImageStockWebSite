@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
 import { isAxiosError } from 'axios';
-import { Button } from 'components/Button';
+import { Button } from 'components/Shared/Button';
 import ERROR from 'handlers/errorMessages';
 import { vars } from 'style/vars';
 

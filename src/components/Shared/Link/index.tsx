@@ -1,4 +1,4 @@
-import { ButtonStyle, buttonStyle } from 'components/Button/Button';
+import { ButtonStyle, buttonStyle } from 'components/Shared/Button/Button';
 import { Link, To, RelativeRoutingType } from 'react-router-dom';
 
 type StyledLinkProps = Omit<

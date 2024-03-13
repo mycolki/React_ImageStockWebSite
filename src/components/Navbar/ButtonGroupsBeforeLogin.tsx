@@ -2,7 +2,7 @@ import { css } from '@emotion/css';
 import { Button, StyledLink, Unlike } from 'components';
 import { vars } from 'style/vars';
 
-function ButtonsAfterLogin() {
+function ButtonsAfterLogin({ username }: { username: string }) {
   return (
     <>
       <Button size="small" variant="secondary">
@@ -22,7 +22,7 @@ function ButtonsAfterLogin() {
           font-weight: ${vars.fontWeight[500]};
         `}
       >
-        myColki
+        {username}
       </span>
     </>
   );

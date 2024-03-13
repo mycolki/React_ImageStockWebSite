@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { Variant } from 'style/element';
-import { Like, Unlike } from 'components/Icons';
+import { Like, Unlike } from 'components/Shared/Icons';
 import Button from './Button';
 import { likePhoto, unlikePhoto } from 'handlers/photo';
 import { useUser, useGetLikeCallback } from 'hooks';
